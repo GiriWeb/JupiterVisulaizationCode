@@ -1,0 +1,70 @@
+# Import libraries
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Create sample dataset
+data = {
+    "Student": ["A", "B", "C", "D", "E", "F", "G"],
+    "Math": [85, 78, 92, 70, 88, 76, 95],
+    "Science": [90, 75, 85, 80, 92, 70, 88],
+    "English": [88, 82, 91, 73, 85, 79, 90]
+}
+
+# Convert to DataFrame
+df = pd.DataFrame(data)
+
+# Display dataset
+print("Dataset:")
+print(df)
+
+# Set style
+sns.set(style="whitegrid")
+
+# -----------------------------
+# Bar Chart
+# -----------------------------
+plt.figure(figsize=(8,5))
+plt.bar(df["Student"], df["Math"])
+plt.title("Math Marks of Students")
+plt.xlabel("Students")
+plt.ylabel("Marks")
+plt.show()
+
+# -----------------------------
+# Line Chart
+# -----------------------------
+plt.figure(figsize=(8,5))
+plt.plot(df["Student"], df["Science"], marker='o')
+plt.title("Science Marks Trend")
+plt.xlabel("Students")
+plt.ylabel("Marks")
+plt.show()
+
+# -----------------------------
+# Histogram
+# -----------------------------
+plt.figure(figsize=(8,5))
+plt.hist(df["English"], bins=5)
+plt.title("Distribution of English Marks")
+plt.xlabel("Marks")
+plt.ylabel("Frequency")
+plt.show()
+
+# -----------------------------
+# Scatter Plot
+# -----------------------------
+plt.figure(figsize=(8,5))
+plt.scatter(df["Math"], df["Science"])
+plt.title("Math vs Science Marks")
+plt.xlabel("Math Marks")
+plt.ylabel("Science Marks")
+plt.show()
+
+# -----------------------------
+# Seaborn Heatmap
+# -----------------------------
+plt.figure(figsize=(6,4))
+sns.heatmap(df[["Math","Science","English"]].corr(), annot=True, cmap="coolwarm")
+plt.title("Correlation Between Subjects")
+plt.show()
